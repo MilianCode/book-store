@@ -1,7 +1,7 @@
 package com.example.dto;
 
-import lombok.Data;
 import java.math.BigDecimal;
+import lombok.Data;
 
 @Data
 public class BookDto {
