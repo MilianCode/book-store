@@ -9,15 +9,15 @@ import com.example.repository.BookRepository;
 import com.example.service.BookService;
 import java.util.List;
 import java.util.Optional;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class BookServiceImpl implements BookService {
-
-    private final BookRepository bookRepository;
-    private final BookMapper bookMapper;
+    
+    private BookRepository bookRepository;
+    private BookMapper bookMapper;
 
     @Override
     public BookDto save(CreateBookRequestDto requestDto) {
