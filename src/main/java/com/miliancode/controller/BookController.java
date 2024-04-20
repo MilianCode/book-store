@@ -4,7 +4,6 @@ import com.miliancode.dto.BookDto;
 import com.miliancode.dto.CreateBookRequestDto;
 import com.miliancode.service.BookService;
 import java.util.List;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
