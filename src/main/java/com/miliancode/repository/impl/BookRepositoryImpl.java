@@ -1,8 +1,8 @@
-package com.example.repository.impl;
+package com.miliancode.repository.impl;
 
-import com.example.exception.EntityNotFoundException;
-import com.example.model.Book;
-import com.example.repository.BookRepository;
+import com.miliancode.exception.EntityNotFoundException;
+import com.miliancode.model.Book;
+import com.miliancode.repository.BookRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;

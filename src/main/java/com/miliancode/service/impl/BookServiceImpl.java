@@ -1,14 +1,13 @@
-package com.example.service.impl;
+package com.miliancode.service.impl;
 
-import com.example.dto.BookDto;
-import com.example.dto.CreateBookRequestDto;
-import com.example.exception.EntityNotFoundException;
-import com.example.mapper.BookMapper;
-import com.example.model.Book;
-import com.example.repository.BookRepository;
-import com.example.service.BookService;
+import com.miliancode.dto.BookDto;
+import com.miliancode.dto.CreateBookRequestDto;
+import com.miliancode.exception.EntityNotFoundException;
+import com.miliancode.mapper.BookMapper;
+import com.miliancode.model.Book;
+import com.miliancode.repository.BookRepository;
+import com.miliancode.service.BookService;
 import java.util.List;
-import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -35,10 +34,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDto findById(Long id) {
-        Optional<Book> optionalBook = bookRepository.findById(id);
-        if (optionalBook.isPresent()) {
-            return bookMapper.toDto(optionalBook.get());
-        }
-        throw new EntityNotFoundException("Cant find book by id = " + id);
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Cant find book by id = " + id));
+        return bookMapper.toDto(book);
     }
 }

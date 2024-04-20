@@ -1,11 +1,10 @@
-package com.example.dto;
+package com.miliancode.dto;
 
 import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
-public class BookDto {
-    private Long id;
+public class CreateBookRequestDto {
     private String title;
     private String author;
     private String isbn;

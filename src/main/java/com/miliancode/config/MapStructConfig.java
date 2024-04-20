@@ -1,4 +1,4 @@
-package com.example.config;
+package com.miliancode.config;
 
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.NullValueCheckStrategy;

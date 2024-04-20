@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.miliancode.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EntityScan(basePackages = {"com.example"})
-@ComponentScan(basePackages = {"com.example"})
+@EntityScan(basePackages = {"com.miliancode"})
+@ComponentScan(basePackages = {"com.miliancode"})
 public class DemoApplication {
 
     public static void main(String[] args) {

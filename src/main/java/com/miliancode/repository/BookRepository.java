@@ -1,6 +1,6 @@
-package com.example.repository;
+package com.miliancode.repository;
 
-import com.example.model.Book;
+import com.miliancode.model.Book;
 import java.util.List;
 import java.util.Optional;
 

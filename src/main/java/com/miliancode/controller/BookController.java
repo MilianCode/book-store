@@ -1,10 +1,11 @@
-package com.example.controller;
+package com.miliancode.controller;
 
-import com.example.dto.BookDto;
-import com.example.dto.CreateBookRequestDto;
-import com.example.service.BookService;
+import com.miliancode.dto.BookDto;
+import com.miliancode.dto.CreateBookRequestDto;
+import com.miliancode.service.BookService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,15 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/books")
+@RequiredArgsConstructor
+@RequestMapping(value = "/books")
 public class BookController {
-
     private final BookService bookService;
-
-    @Autowired
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @GetMapping
     public List<BookDto> getAll() {
