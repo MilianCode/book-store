@@ -1,7 +1,8 @@
 package com.miliancode.dto;
 
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 import lombok.Data;
 
@@ -13,8 +14,9 @@ public class CreateBookRequestDto {
     private String author;
     @NotBlank
     private String isbn;
-    @DecimalMin(value = "0.0", inclusive = false)
+    @Positive
     private BigDecimal price;
+    @Size(min = 5, message = "Description cannot be that short")
     private String description;
     private String coverImage;
 }
