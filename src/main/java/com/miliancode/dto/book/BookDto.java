@@ -1,4 +1,4 @@
-package com.miliancode.dto;
+package com.miliancode.dto.book;
 
 import java.math.BigDecimal;
 import lombok.Data;

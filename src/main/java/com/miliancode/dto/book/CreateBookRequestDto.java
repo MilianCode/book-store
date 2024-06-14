@@ -1,4 +1,4 @@
-package com.miliancode.dto;
+package com.miliancode.dto.book;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
