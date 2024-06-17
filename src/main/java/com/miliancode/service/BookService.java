@@ -1,7 +1,7 @@
 package com.miliancode.service;
 
-import com.miliancode.dto.BookDto;
-import com.miliancode.dto.CreateBookRequestDto;
+import com.miliancode.dto.book.BookDto;
+import com.miliancode.dto.book.CreateBookRequestDto;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
 

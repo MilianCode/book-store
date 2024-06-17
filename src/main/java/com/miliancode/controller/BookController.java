@@ -1,7 +1,7 @@
 package com.miliancode.controller;
 
-import com.miliancode.dto.BookDto;
-import com.miliancode.dto.CreateBookRequestDto;
+import com.miliancode.dto.book.BookDto;
+import com.miliancode.dto.book.CreateBookRequestDto;
 import com.miliancode.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

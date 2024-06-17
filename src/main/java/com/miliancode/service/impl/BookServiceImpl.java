@@ -1,7 +1,7 @@
 package com.miliancode.service.impl;
 
-import com.miliancode.dto.BookDto;
-import com.miliancode.dto.CreateBookRequestDto;
+import com.miliancode.dto.book.BookDto;
+import com.miliancode.dto.book.CreateBookRequestDto;
 import com.miliancode.exception.EntityNotFoundException;
 import com.miliancode.mapper.BookMapper;
 import com.miliancode.model.Book;
