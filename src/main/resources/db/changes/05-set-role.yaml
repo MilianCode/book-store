@@ -1,0 +1,92 @@
+databaseChangeLog:
+  - changeSet:
+      id: update-users-table
+      author: maksymmilian
+      changes:
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: name
+                  value: ADMIN
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: name
+                  value: USER
+
+  - changeSet:
+      id: insert-user1
+      author: maksymmilian
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: email
+                  value: test@gmail.com
+              - column:
+                  name: password
+                  value: $2a$10$X2tfikfMWh0fJMK2xfLWbe5HYTup1FN2UDEZ.lOPW5cPo/FBS..Ha #hondacrz
+              - column:
+                  name: first_name
+                  value: Paul
+              - column:
+                  name: last_name
+                  value: Walker
+              - column:
+                  name: shipping_address
+                  value: "Miami, USA"
+
+  - changeSet:
+      id: insert-user2
+      author: maksymmilian
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: email
+                  value: kato@gmail.com
+              - column:
+                  name: password
+                  value: $2a$10$GxRllwCGhTXsjnwHYXV4LufaLTZA.9EG.2ibBj0FdvQPnRR7cOLja #toyotamr2
+              - column:
+                  name: first_name
+                  value: Kato
+              - column:
+                  name: last_name
+                  value: Liberty
+              - column:
+                  name: shipping_address
+                  value: "Osaka, Japan"
+
+  - changeSet:
+      id: insert-users_roles
+      author: maksymmilian
+      changes:
+        - insert:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: role_id
+                  value: 2
+        - insert:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: role_id
+                  value: 1
