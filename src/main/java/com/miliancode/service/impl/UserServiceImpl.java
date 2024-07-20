@@ -9,7 +9,6 @@ import com.miliancode.model.User;
 import com.miliancode.repository.RoleRepository;
 import com.miliancode.repository.UserRepository;
 import com.miliancode.service.UserService;
-import java.util.HashSet;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,9 +29,8 @@ public class UserServiceImpl implements UserService {
         }
         User user = userMapper.toModel(requestDto);
         user.setPassword(passwordEncoder.encode(requestDto.getPassword()));
-        Set<Role> roles = new HashSet<>();
-        roles.add(roleRepository.findByRoleNameString(Role.RoleName.USER.toString()));
-        user.setRoles(roles);
+        Role userRole = roleRepository.findByName(Role.RoleName.ROLE_USER);
+        user.setRoles(Set.of(userRole));
         User savedUser = userRepository.save(user);
         return userMapper.toUserResponse(savedUser);
     }

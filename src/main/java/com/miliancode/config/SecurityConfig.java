@@ -1,4 +1,4 @@
-package com.miliancode.security;
+package com.miliancode.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
