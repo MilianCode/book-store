@@ -4,10 +4,14 @@ import com.miliancode.dto.user.UserRegistrationRequestDto;
 import com.miliancode.dto.user.UserResponseDto;
 import com.miliancode.exception.RegistrationException;
 import com.miliancode.mapper.UserMapper;
+import com.miliancode.model.Role;
 import com.miliancode.model.User;
+import com.miliancode.repository.RoleRepository;
 import com.miliancode.repository.UserRepository;
 import com.miliancode.service.UserService;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +19,8 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
 
     @Override
     public UserResponseDto register(UserRegistrationRequestDto requestDto) {
@@ -22,7 +28,10 @@ public class UserServiceImpl implements UserService {
             throw new RegistrationException("User with this email is already registered");
         }
         User user = userMapper.toModel(requestDto);
-        User savedUser = userRepository.save(user);
-        return userMapper.toUserResponse(savedUser);
+        user.setPassword(passwordEncoder.encode(requestDto.getPassword()));
+        Role userRole = roleRepository.findByName(Role.RoleName.ROLE_USER);
+        user.setRoles(Set.of(userRole));
+        userRepository.save(user);
+        return userMapper.toUserResponse(user);
     }
 }

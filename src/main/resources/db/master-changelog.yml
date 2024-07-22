@@ -1,3 +1,11 @@
 databaseChangeLog:
   - include:
-      file: db/changelog.yml
+      file : db/changes/01-create-books-table.yaml
+  - include:
+      file : db/changes/02-create-users-table.yaml
+  - include:
+      file: db/changes/03-create-roles-table.yaml
+  - include:
+      file: db/changes/04-create-relation-user-role-table.yaml
+  - include:
+      file: db/changes/05-set-role.yaml

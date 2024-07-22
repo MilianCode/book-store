@@ -40,3 +40,164 @@ databaseChangeLog:
       rollback:
         - dropTable:
             tableName: books
+
+  - changeSet:
+      id: 2
+      author: mateacademy
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: role_name
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+      rollback:
+        - dropTable:
+            tableName: roles
+
+  - changeSet:
+      id: 3
+      author: mateacademy
+      changes:
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: role_name
+                  value: ADMIN
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: role_name
+                  value: USER
+      rollback:
+        - delete:
+            tableName: roles
+            where: role_name='ADMIN'
+        - delete:
+            tableName: roles
+            where: role_name='USER'
+
+  - changeSet:
+      id: 4
+      author: mateacademy
+      preconditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            tableName: users
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: shipping_address
+                  type: varchar(255)
+              - column:
+                  name: is_deleted
+                  type: boolean
+                  defaultValue: false
+      rollback:
+        - dropTable:
+            tableName: users
+
+  - changeSet:
+      id: 5
+      author: mateacademy
+      changes:
+        - createTable:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+            tableName: users_roles
+
+  - changeSet:
+      id: 6
+      author: mateacademy
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: admin@example.com
+              - column:
+                  name: password
+                  value: admin_password_hash
+              - column:
+                  name: first_name
+                  value: Admin
+              - column:
+                  name: last_name
+                  value: User
+              - column:
+                  name: is_deleted
+                  value: false
+
+  - changeSet:
+      id: 7
+      author: mateacademy
+      changes:
+        - insert:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  valueComputed: (SELECT id FROM users WHERE email='admin@example.com')
+              - column:
+                  name: role_id
+                  valueComputed: (SELECT id FROM roles WHERE role_name='ADMIN')
+      rollback:
+        - delete:
+            tableName: users_roles
+            where: user_id=(SELECT id FROM users WHERE email='admin@example.com') and role_id=(SELECT id FROM roles WHERE role_name='ADMIN')
