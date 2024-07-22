@@ -38,4 +38,10 @@ public class CustomGlobalExceptionHandler {
         return new ResponseEntity<>("Error occured during registration: " + ex.getMessage(),
                 HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<String> handleRegistrationExceptions(AuthenticationException ex) {
+        return new ResponseEntity<>("Error occured during logging in: " + ex.getMessage(),
+                HttpStatus.NOT_FOUND);
+    }
 }
