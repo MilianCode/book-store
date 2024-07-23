@@ -42,6 +42,6 @@ public class CustomGlobalExceptionHandler {
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<String> handleRegistrationExceptions(AuthenticationException ex) {
         return new ResponseEntity<>("Error occured during logging in: " + ex.getMessage(),
-                HttpStatus.NOT_FOUND);
+                HttpStatus.CONFLICT);
     }
 }
