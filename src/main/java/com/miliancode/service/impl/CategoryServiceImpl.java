@@ -7,10 +7,10 @@ import com.miliancode.mapper.CategoryMapper;
 import com.miliancode.model.Category;
 import com.miliancode.repository.CategoryRepository;
 import com.miliancode.service.CategoryService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Pageable;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor

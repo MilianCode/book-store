@@ -2,8 +2,8 @@ package com.miliancode.service;
 
 import com.miliancode.dto.category.CategoryDto;
 import com.miliancode.dto.category.CreateCategoryRequestDto;
-import org.springframework.data.domain.Pageable;
 import java.util.List;
+import org.springframework.data.domain.Pageable;
 
 public interface CategoryService {
     CategoryDto save(CreateCategoryRequestDto requestDto);

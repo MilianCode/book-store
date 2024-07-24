@@ -36,7 +36,9 @@ public class BookController {
     @Operation(summary = "Get all books", description = "Get a list of all "
             + "avalaible books")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public List<BookDtoWithoutCategotyIds> getAll(@ParameterObject @PageableDefault Pageable pageable) {
+    public List<BookDtoWithoutCategotyIds> getAll(
+            @ParameterObject @PageableDefault Pageable pageable
+    ) {
         return bookService.findAll(pageable);
     }
 
