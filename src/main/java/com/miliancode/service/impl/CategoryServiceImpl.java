@@ -7,6 +7,7 @@ import com.miliancode.mapper.CategoryMapper;
 import com.miliancode.model.Category;
 import com.miliancode.repository.CategoryRepository;
 import com.miliancode.service.CategoryService;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -21,16 +22,17 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDto save(CreateCategoryRequestDto requestDto) {
         Category category = mapper.toModel(requestDto);
-        Category savedCategory = categoryRepository.save(category);
-        return mapper.toDto(savedCategory);
+        return mapper.toDto(categoryRepository.save(category));
     }
 
+    @Transactional
     @Override
     public CategoryDto update(Long id, CreateCategoryRequestDto requestDto) {
-        Category category = mapper.toModel(requestDto);
-        category.setId(id);
-        categoryRepository.save(category);
-        return mapper.toDto(category);
+        Category category = categoryRepository.findById(id)
+                        .orElseThrow(() -> new EntityNotFoundException("Cant find "
+                                + "category by id = " + id));
+        mapper.updateCategoryFromDto(requestDto, category);
+        return mapper.toDto(categoryRepository.save(category));
     }
 
     @Override

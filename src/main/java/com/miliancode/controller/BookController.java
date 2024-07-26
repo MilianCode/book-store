@@ -1,7 +1,6 @@
 package com.miliancode.controller;
 
 import com.miliancode.dto.book.BookDto;
-import com.miliancode.dto.book.BookDtoWithoutCategotyIds;
 import com.miliancode.dto.book.CreateBookRequestDto;
 import com.miliancode.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,7 +35,7 @@ public class BookController {
     @Operation(summary = "Get all books", description = "Get a list of all "
             + "avalaible books")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public List<BookDtoWithoutCategotyIds> getAll(
+    public List<BookDto> getAll(
             @ParameterObject @PageableDefault Pageable pageable
     ) {
         return bookService.findAll(pageable);
