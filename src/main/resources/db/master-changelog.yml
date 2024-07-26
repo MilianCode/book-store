@@ -9,3 +9,7 @@ databaseChangeLog:
       file: db/changes/04-create-relation-user-role-table.yaml
   - include:
       file: db/changes/05-set-role.yaml
+  - include:
+      file: db/changes/06-create-categories-table.yaml
+  - include:
+      file: db/changes/07-create-category-book-relation-table.yaml
