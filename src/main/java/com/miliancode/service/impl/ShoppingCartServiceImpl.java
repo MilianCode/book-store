@@ -65,7 +65,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                         )
                 );
         cartItem.setQuantity(updateCartItemRequestDto.getQuantity());
-        cartItemRepository.save(cartItem);
         return getShoppingCart(userId);
     }
 

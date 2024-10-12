@@ -54,7 +54,7 @@ public class ShoppingCartController {
     @Operation(summary = "Updating cart item quantity", description = "Updating cart item quantity")
     public ShoppingCartDto updateItemQuantity(
             @PathVariable Long itemId,
-            @RequestBody@Valid UpdateCartItemRequestDto updateCartItemRequestDto,
+            @RequestBody @Valid UpdateCartItemRequestDto updateCartItemRequestDto,
             Authentication authentication) {
         User user = (User) authentication.getPrincipal();
         return shoppingCartService.updateCartItem(itemId, updateCartItemRequestDto, user.getId());
