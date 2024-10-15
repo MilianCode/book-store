@@ -8,6 +8,7 @@ import com.miliancode.model.Book;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.Named;
 
 @Mapper(config = MapStructConfig.class)
 public interface BookMapper {
@@ -20,5 +21,10 @@ public interface BookMapper {
     @AfterMapping
     default void setCategoriesIds(@MappingTarget BookDto bookDto, Book book) {
         bookDto.setCategories(book.getCategories());
+    }
+
+    @Named("bookFromId")
+    default Book bookFromId(Long id) {
+        return new Book();
     }
 }

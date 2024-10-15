@@ -1,42 +1,38 @@
 databaseChangeLog:
   - changeSet:
-      id: create-users-table
+      id: create-cart-items-table
       author: maksymmilian
       changes:
         - createTable:
-            tableName: users
+            tableName: cart_items
             columns:
               - column:
                   name: id
                   type: bigint
                   autoIncrement: true
                   constraints:
+                    primaryKeyName: pk_cart_items_id
                     primaryKey: true
                     nullable: false
               - column:
-                  name: email
-                  type: varchar(255)
+                  name: shoppingcart_id
+                  type: bigint
                   constraints:
-                    nullable: false
-                    unique: true
-              - column:
-                  name: password
-                  type: varchar(100)
-                  constraints:
+                    foreignKeyName: fk_cart_items_carts
+                    references: shopping_carts(id)
                     nullable: false
               - column:
-                  name: first_name
-                  type: varchar(30)
+                  name: book_id
+                  type: bigint
                   constraints:
+                    foreignKeyName: fk_cart_items_books
+                    references: books(id)
                     nullable: false
               - column:
-                  name: last_name
-                  type: varchar(30)
+                  name: quantity
+                  type: integer
                   constraints:
                     nullable: false
-              - column:
-                  name: shipping_address
-                  type: varchar(255)
               - column:
                   name: is_deleted
                   type: TINYINT(1)

@@ -1,21 +1,22 @@
 databaseChangeLog:
   - changeSet:
-      id: create-roles-table
+      id: create-shopping-carts-table
       author: maksymmilian
       changes:
         - createTable:
-            tableName: roles
+            tableName: shopping_carts
             columns:
               - column:
                   name: id
                   type: bigint
                   autoIncrement: true
                   constraints:
+                    primaryKeyName: pk_shopping_carts_id
                     primaryKey: true
                     nullable: false
               - column:
-                  name: name
-                  type: enum ('ROLE_USER','ROLE_ADMIN')
+                  name: is_deleted
+                  type: TINYINT(1)
+                  defaultValueBoolean: false
                   constraints:
                     nullable: false
-                    unique: true
