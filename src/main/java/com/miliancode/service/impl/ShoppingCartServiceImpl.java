@@ -60,7 +60,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 .findByIdAndShoppingCartUserId(itemId, userId)
                 .orElseThrow(
                         () -> new EntityNotFoundException(
-                                "Can't find shopping cart for user with id "
+                                "Can't find item with id" + itemId
+                                        + "shopping cart for user with id "
                                         + userId
                         )
                 );
@@ -79,10 +80,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public void createShoppingCart(User user) {
+    public ShoppingCartDto createShoppingCart(User user) {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setUser(user);
         shoppingCartRepository.save(shoppingCart);
+        return shoppingCartMapper.toDto(shoppingCart);
     }
 
     private ShoppingCart getShoppingCartByUserId(Long id) {
